@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,7 +16,7 @@
             </div>
             <div class="nav_right">
                 <li><a class="link_signup" href="pages/inscription.php">Inscription</a></li>
-                <li><a class="link_signin" href="connexion.php">Connexion</a></li>
+                <li><a class="link_signin" href="pages/connexion.php">Connexion</a></li>
             </div>
         </ul>
     </nav>
@@ -26,5 +26,6 @@
         d’exercice de <span class="red">musculation</span></h3>
         <p class="grey">Entrez vos exercice, vos series, vos poids, vos dates et constatez votre progression</p>
     </section>
+
 </body>
 </html>

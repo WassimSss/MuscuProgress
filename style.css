@@ -250,6 +250,7 @@ body {
   cursor: pointer;
   transform: translateY(-20px);
   transition: 0.25s;
+  font-size: 15px;
 }
 .form_test .submit_style:hover {
   background-color: #AF1717;
@@ -286,6 +287,392 @@ body {
 
 #submit_signin {
   margin-top: 10px;
+}
+
+.nav_app ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px 0 0 0;
+}
+.nav_app ul div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nav_app ul div a {
+  text-decoration: none;
+  color: #ffffff;
+}
+.nav_app ul .nav_left {
+  margin-left: 5%;
+}
+.nav_app ul .nav_left a {
+  font-size: 20px;
+  font-weight: 600;
+  transition: 0.25s;
+}
+.nav_app ul .nav_left a:hover {
+  opacity: 70%;
+}
+.nav_app ul .nav_left .img_logo {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+}
+.nav_app ul .nav_mid li {
+  margin-right: 20px;
+}
+.nav_app ul .nav_right {
+  margin-right: 5%;
+}
+.nav_app ul .nav_right .link_signup {
+  color: #898989;
+  transition: 0.25s;
+}
+.nav_app ul .nav_right .link_signup:hover {
+  color: #F24646;
+  opacity: 70%;
+}
+.nav_app ul .nav_right .link_signin {
+  background-color: #F24646;
+  padding: 6px 12px;
+  border-radius: 20px;
+  transition: 0.25s;
+}
+.nav_app ul .nav_right .link_signin:hover {
+  background-color: #AF1717;
+}
+
+.all_app {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+}
+
+.session_calendar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.session_calendar .calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+  width: 280px;
+  grid-template-rows: repeat(6, 40px);
+  height: 240px;
+  background-color: #272727;
+  border: 1px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.session_calendar .calendar .calendar_child {
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  cursor: pointer;
+}
+.session_calendar .calendar .calendar_child:hover {
+  background-color: #F24646;
+  transition: 0.1s;
+}
+
+.day_session_and_recap {
+  display: flex;
+  justify-content: space-around;
+}
+.day_session_and_recap .day_session {
+  margin-top: 75px;
+  color: #ffffff;
+  grid-area: 1/1/2/4;
+}
+.day_session_and_recap .day_session p {
+  margin: 0 0 5px 15px;
+  font-size: 17px;
+  text-align: center;
+}
+.day_session_and_recap .day_session .form_day_session {
+  background-color: #272727;
+  border-radius: 20px;
+  width: 300px;
+}
+.day_session_and_recap .day_session .form_day_session .label_and_select {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #F24646;
+}
+.day_session_and_recap .day_session .form_day_session .label_and_select select {
+  width: 200px;
+}
+.day_session_and_recap .day_session .form_day_session input {
+  border: none;
+  outline: none;
+}
+.day_session_and_recap .day_session .form_day_session .duo_label {
+  display: flex;
+  padding: 30px 30px 0 30px;
+}
+.day_session_and_recap .day_session .form_day_session .duo_label .input_and_label {
+  position: relative;
+  margin-right: 15px;
+  width: 50%;
+}
+.day_session_and_recap .day_session .form_day_session .input_and_label {
+  position: relative;
+  background-color: #121212;
+  border-radius: 20px;
+  height: 55px;
+  overflow: hidden;
+}
+.day_session_and_recap .day_session .form_day_session .input_and_label input {
+  position: absolute;
+  bottom: 2px;
+  left: 20px;
+  height: 50%;
+  width: calc(100% - 40px);
+  background-color: #121212;
+  opacity: 100%;
+  color: #ffffff;
+}
+.day_session_and_recap .day_session .form_day_session .input_and_label label {
+  position: absolute;
+  left: -50%;
+  top: 5px;
+}
+.day_session_and_recap .day_session .form_day_session .signup_div {
+  margin: 0 0 45px 30px;
+}
+.day_session_and_recap .day_session .form_day_session .password_conditions {
+  position: absolute;
+  display: flex;
+  width: 460px;
+  justify-content: space-around;
+  transform: translateY(-55px);
+  color: #898989;
+  font-size: 14px;
+}
+.day_session_and_recap .day_session .form_day_session .submit_div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.day_session_and_recap .day_session .form_day_session .submit_style {
+  background-color: #F24646;
+  color: #ffffff;
+  padding: 7px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transform: translateY(-20px);
+  transition: 0.25s;
+  font-size: 15px;
+}
+.day_session_and_recap .day_session .form_day_session .submit_style:hover {
+  background-color: #AF1717;
+}
+.day_session_and_recap .day_session .label_center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.day_session_and_recap .day_session .label_center .input_and_label {
+  position: relative;
+  background-color: #121212;
+  border-radius: 20px;
+  height: 55px;
+  width: 200px;
+  overflow: hidden;
+}
+.day_session_and_recap .day_session .label_center .input_and_label input {
+  position: absolute;
+  bottom: 2px;
+  left: 20px;
+  height: 50%;
+  width: calc(100% - 40px);
+  background-color: #121212;
+  opacity: 100%;
+  color: #ffffff;
+}
+.day_session_and_recap .day_session .label_center .input_and_label label {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+  color: #F24646;
+}
+.day_session_and_recap .day_session .label_center .input_and_label .more_logo {
+  position: absolute;
+  color: #F24646;
+  font-size: 25px;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-20%);
+}
+.day_session_and_recap .day_session .label_center div {
+  margin: 20px;
+}
+.day_session_and_recap .day_session .label_center #submit_day_session {
+  margin-top: 20px;
+}
+.day_session_and_recap .day_recap {
+  width: 500px;
+  margin-top: 75px;
+  border-radius: 20px;
+}
+.day_session_and_recap .day_recap p {
+  margin: 0 0 5px 15px;
+  font-size: 17px;
+}
+.day_session_and_recap .day_recap .all_contain {
+  background-color: #272727;
+  border-radius: 20px;
+  color: #ffffff;
+  padding: 25px 0px;
+  flex-wrap: wrap;
+}
+.day_session_and_recap .day_recap .all_contain h2 {
+  margin: 0;
+  text-align: center;
+}
+.day_session_and_recap .day_recap .all_contain .empty_session_text {
+  text-align: center;
+  margin: 10px 0 0 0;
+}
+.day_session_and_recap .day_recap .all_for_muscle {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-around;
+  align-items: center;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo {
+  height: 100%;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo h3 {
+  font-size: 20px;
+  margin-left: 15px;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo .title_exercise {
+  font-size: 16px;
+  text-decoration: underline #F24646;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo .title_exercise:before {
+  /*content: "";*/
+  position: absolute;
+  bottom: 0;
+  transform: translateY(3px);
+  width: 100%;
+  height: 2px;
+  background-color: #F24646;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo .line_exercise {
+  display: flex;
+}
+.day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo .line_exercise p {
+  font-size: 13px;
+  margin-right: 10px;
+}
+
+.weight {
+  display: flex;
+}
+.weight .weight_last_week {
+  width: 150px;
+  margin: 20px 0 0 25px;
+  color: #ffffff;
+}
+.weight .weight_last_week p {
+  margin: 0 0 0 0;
+  text-align: center;
+  font-size: 13px;
+}
+.weight .weight_last_week .box_weight {
+  width: 150px;
+  height: 150px;
+  border-radius: 25px;
+  background-color: #272727;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weight .weight_last_week .box_weight p {
+  max-width: 100px;
+  font-size: 35px;
+}
+.weight .weight_this_week {
+  width: 150px;
+  margin: 20px 0 0 25px;
+  color: #ffffff;
+}
+.weight .weight_this_week p {
+  margin: 0 0 0 0;
+  text-align: center;
+  font-size: 13px;
+}
+.weight .weight_this_week .box_weight {
+  width: 150px;
+  height: 150px;
+  border-radius: 25px;
+  background-color: #272727;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.weight .weight_this_week .box_weight p {
+  max-width: 100px;
+  font-size: 35px;
+}
+
+#muscle_selects {
+  background-color: red;
+}
+
+.delete_logo {
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #F24646;
+  transition: 0.15s;
+}
+.delete_logo ion-icon {
+  position: absolute;
+  color: #ffffff;
+  font-size: 20px;
+  border-radius: 100%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+@media screen and (max-width: 850px) {
+  .all_contain {
+    width: 300px;
+  }
+
+  .day_session_and_recap {
+    justify-content: space-around;
+  }
+  .day_session_and_recap .day_recap {
+    width: 300px;
+  }
+  .day_session_and_recap .day_recap .all_for_muscle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo {
+    width: 200px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .day_session_and_recap {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

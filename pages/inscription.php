@@ -1,3 +1,7 @@
+<?php
+require '../config/bddInscription.php';
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -69,6 +73,7 @@
         </form>
     </section>
 
+    <?php if(isset($erreur)){echo $erreur;} ?>
     <script src="../js/jquery-3.6.0.min.js"></script>
     <script src="../js/form_js.js"></script>
 </body>

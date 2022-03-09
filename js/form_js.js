@@ -16,7 +16,7 @@ const usernameChecker = (elem) => {
     var idElem = new String("#" + elem.id);
     console.log(elem);
     console.log(idElem);
-    if(!elem.value.match(/^[a-zA-Z]*$/) || elem.value.length >= 20) { /*Si le nom a autre que lettres /^[a-zA-Z]*$/ */
+    if(!elem.value.match(/^[a-zA-Z]*$/) || elem.value.length > 20) { /*Si le nom a autre que lettres /^[a-zA-Z]*$/ */
         $("#label_username").css("color", variablesScss["red"]);
         $("#username").css("color", variablesScss["redplus"]);
     } else {
@@ -155,3 +155,4 @@ inputs.forEach((input) => {
 
 })
 });
+

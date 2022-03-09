@@ -6,7 +6,7 @@ $green: #009B4A;
 $white : #ffffff;
 $grey : #898989;
 $greyplus : #272727;
-$black : #121212;
+$black : #121212; //121212
 /*Enlever style input number*/
 /* Firefox */
 input[type=number] {-moz-appearance: textfield;}
@@ -306,6 +306,7 @@ body {
         cursor: pointer;
         transform:translateY(-20px);
         transition: 0.25s;
+        font-size: 15px;
 
         &:hover {
             background-color: $redplus;
@@ -318,7 +319,7 @@ body {
     width: 500px;
 }
 
-// signin
+// signin 
 
 .nav_signin {
     .nav_right {
@@ -359,4 +360,482 @@ body {
     margin-top: 10px;
 }
 
+// app
 
+.nav_app {
+
+    ul{
+        display: flex;   
+        align-items: center;
+        justify-content: space-between;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 0 0 0;
+
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: $white;
+            }
+        }
+
+        .nav_left {
+            margin-left: 5%;
+            a{
+                font-size: 20px;
+                font-weight: 600;
+                transition: 0.25s;
+
+                &:hover{
+                    opacity: 70%;
+                }
+            }
+
+
+
+            .img_logo{
+                height: 40px;
+                width: 40px;
+                margin-right:10px;
+            }
+        }
+
+        .nav_mid{
+            li{
+                margin-right: 20px;
+            }
+
+        }
+   
+        .nav_right {
+            margin-right: 5%;
+            .link_signup{
+                color: $grey;
+                transition: 0.25s;
+
+                &:hover {
+                    color: $red;
+                    opacity: 70%;
+                }
+            }
+
+            .link_signin{
+                background-color: $red;
+                padding: 6px 12px;
+                border-radius: 20px;
+                transition: 0.25s;
+
+                &:hover {
+                    background-color: $redplus;
+                }
+            }
+        }   
+    }
+}
+
+.all_app{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+}
+
+.session_calendar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 40px);
+        width: calc(40px * 7);
+        grid-template-rows: repeat(6, 40px);
+        height: calc(40px * 6);
+        background-color: $greyplus;
+        border: 1px solid black;
+        border-radius: 20px;
+        overflow: hidden;
+        
+    
+        .calendar_child{
+            color: $white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid black;
+            cursor: pointer;
+            
+            &:hover {
+                background-color: $red;
+                transition: 0.1s;
+            }
+        }
+    }
+}
+
+
+.day_session_and_recap{
+
+    display: flex;
+    justify-content: space-around;
+    
+
+    .day_session {
+        margin-top: 75px;
+        color: $white;
+        grid-area: 1 / 1 / 2 / 4;
+
+        p{
+            margin: 0 0 5px 15px;
+            font-size: 17px;
+            text-align: center;
+        }
+
+        .form_day_session{
+            background-color: $greyplus;
+            border-radius: 20px;
+            width: 300px;
+
+            .label_and_select{
+                display: flex;
+                flex-direction: column;
+                text-align: center;
+                color: $red;
+
+                select{
+                    
+                    width: 200px;
+                    
+                }
+            }
+
+            input{
+                border: none;
+                outline: none;
+            }
+
+            .duo_label{
+                display: flex;
+                padding: 30px 30px 0 30px;
+
+                .input_and_label{
+                    position: relative;
+                    margin-right: 15px;
+                    width: 50%;
+                }
+            }
+
+            .input_and_label{
+                position: relative;
+                background-color: $black;
+                border-radius: 20px;
+                height: 55px;
+                overflow: hidden;
+                
+                input{
+                    position: absolute;
+                    bottom: 2px;
+                    left: 20px;
+                    height: 50%;
+                    width: calc(100% - 40px);
+                    background-color: $black;
+                    opacity: 100%;
+                    color: $white;
+                }
+            
+                label{
+                    position: absolute;
+                    left: -50%;
+                    top: 5px;
+                }
+            }
+
+            .signup_div {
+                margin: 0 0 45px 30px;
+            }
+
+            .password_conditions{
+                position: absolute;
+                display: flex;
+                width: 460px;   
+                justify-content:space-around;
+                transform: translateY(-55px);
+                color: $grey;
+                font-size: 14px;
+
+            }
+
+            .submit_div{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .submit_style {
+                background-color: $red;
+                color: $white;
+                padding: 7px 14px;
+                border-radius: 20px;
+                cursor: pointer;
+                transform:translateY(-20px);
+                transition: 0.25s;
+                font-size: 15px;
+
+                &:hover {
+                    background-color: $redplus;
+                }
+
+            }
+        }
+
+        .label_center{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .input_and_label{
+                position: relative;
+                background-color: $black;
+                border-radius: 20px;
+                height: 55px;
+                width: 200px;
+                overflow: hidden;
+                
+                input{
+                    position: absolute;
+                    bottom: 2px;
+                    left: 20px;
+                    height: 50%;
+                    width: calc(100% - 40px);
+                    background-color: $black;
+                    opacity: 100%;
+                    color: $white;
+                }
+            
+                label{
+                    position: absolute;
+                    left: 20px;
+                    top: 5px;
+                    color: $red;
+                }
+
+                .more_logo{
+                    position: absolute;
+                    color: $red;
+                    font-size: 25px;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-20%);
+                    
+                }
+            }
+
+            div {
+                margin: 20px;
+            }
+
+            #submit_day_session{
+                margin-top: 20px;
+            }
+        }
+    }
+
+    .day_recap{
+        width: 500px;
+        margin-top: 75px;
+        border-radius: 20px;  
+
+        p{
+            margin: 0 0 5px 15px;
+            font-size: 17px;
+        }
+
+        .all_contain{
+            background-color: $greyplus;
+            border-radius: 20px;
+            color: $white;
+            padding: 25px 0px;
+            flex-wrap: wrap;
+
+            h2{
+                margin: 0;
+                text-align: center;
+            }
+
+            .empty_session_text{
+                text-align: center;
+                margin: 10px 0 0 0;
+            }
+        }
+
+        .all_for_muscle{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            justify-content: space-around;
+            align-items: center;
+            
+
+    
+            .all_for_muscle_solo{
+                height: 100%;
+
+                h3{
+                    font-size: 20px;
+                    margin-left: 15px;
+                }
+
+                .title_exercise{
+                    
+                    font-size:16px;
+                    text-decoration: underline $red;
+                    // border-bottom: 2px solid $red;
+                    // padding-bottom: 3px;
+                    // margin-bottom: 5px;
+
+
+                    &:before {
+                        /*content: "";*/
+                        position: absolute;
+                        bottom: 0;
+                        transform: translateY(3px);
+                        width: 100%;
+                        height: 2px;
+                        background-color: $red;
+                    }
+                }
+
+                .line_exercise{
+                    display: flex;
+
+                    p {
+                        font-size:13px;
+                        margin-right: 10px;
+                        
+                    }
+                }
+            }
+
+        }
+
+    }
+
+}
+
+.weight{
+    display: flex;
+
+    .weight_last_week{
+        width: 150px;
+        margin: 20px 0 0 25px;
+        color: $white;
+    
+        p{
+            margin: 0 0 0 0;
+            text-align: center;
+            font-size: 13px;
+        }
+    
+        .box_weight{
+            width: 150px;
+            height: 150px;
+            border-radius: 25px;
+            background-color: $greyplus;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            p{
+                max-width: 100px;
+                font-size: 35px;
+            }
+        }
+    }
+    
+    .weight_this_week{
+        width: 150px;
+        margin: 20px 0 0 25px;
+        color: $white;
+    
+        p{
+            margin: 0 0 0 0;
+            text-align: center;
+            font-size: 13px;
+        }
+    
+        .box_weight{
+            width: 150px;
+            height: 150px;
+            border-radius: 25px;
+            background-color: $greyplus;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+    
+            p{
+                max-width: 100px;
+                font-size: 35px;
+            }
+        }
+    }
+}
+
+#muscle_selects{
+    background-color: red;
+}
+
+.delete_logo {
+    opacity: 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    background-color: $red;
+    transition: 0.15s;
+
+    ion-icon{
+        position: absolute;
+        color: $white;
+        font-size: 20px;
+        border-radius: 100%;
+        transform: translateX(-50%) translateY(-50%);
+    }
+}
+
+@media screen and (max-width: 850px){
+
+    .all_contain{
+        width: 300px;
+    }
+
+    .day_session_and_recap{
+        justify-content: space-around;
+        
+
+        .day_recap{
+            width: 300px;
+
+            .all_for_muscle{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+
+                .all_for_muscle_solo{
+                    width: 200px;
+                }
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    .day_session_and_recap{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

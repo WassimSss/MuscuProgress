@@ -1,3 +1,7 @@
+<?php
+require '../config/bddConnexion.php';
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -45,6 +49,6 @@
             
         </form>
     </section>
-
+    <?php if(isset($erreur)){echo $erreur;} ?>
 </body>
 </html>
