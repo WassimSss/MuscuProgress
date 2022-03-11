@@ -101,7 +101,7 @@
     width: 340px;
 }
 
-.form_test {
+.form_signup_and_signin {
 
     input{
         border: none;
@@ -183,4 +183,17 @@
 
 .signup_form {
     width: 500px;
+}
+
+@media screen and (max-width: 650px){ // Pour les 2 formulaire
+    .signup_form{
+        width: 80vw;
+    }
+
+    .form_signup_and_signin{
+        .password_conditions{
+            width: 80vw;
+        }
+    }
+    
 }

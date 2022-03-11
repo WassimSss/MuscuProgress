@@ -32,7 +32,7 @@ require '../config/bddInscription.php';
             <p>Vous avez un compte ? <a href="connexion.php">Connexion</a></p>
         </div>
 
-        <form class="form_test" method="post">
+        <form class="form_signup_and_signin" method="post">
             <div class="duo_label">
                 <div class="input_and_label">
                     <input type="text" name="username" id="username">

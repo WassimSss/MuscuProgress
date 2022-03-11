@@ -32,7 +32,7 @@ require '../config/bddConnexion.php';
             <p>Vous n'avez pas de compte ? <a href="connexion.php">Inscription</a></p>
         </div>
 
-        <form class="form_test signin_form" method="post">
+        <form class="form_signup_and_signin signin_form" method="post">
                 <div class="input_and_label signin_div">
                     <input type="email" name="email" id="email">
                     <label for="email" id="label_email">Email</label>

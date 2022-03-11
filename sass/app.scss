@@ -251,6 +251,7 @@
         border-radius: 20px; 
         // max-width: 500px; 
         overflow-y: scroll;
+        background-color: $greyplus;
 
         p{
             margin: 0 0 5px 15px;
@@ -258,7 +259,7 @@
         }
 
         .all_contain{
-            background-color: $greyplus;
+            
             border-radius: 20px;
             color: $white;
             padding: 25px 0px;
@@ -510,11 +511,26 @@
     }
 }
 
+@media screen and (max-width: 1050px){ // Pour les 2 formulaire
+    body{
+        background-color: green;
+    }
+
+    .day_recap{
+        min-width: 300px;
+
+        .all_contain{
+            width: 280px;
+        }
+    }
+    
+}
+
  @media screen and (max-width: 850px){
 
-     .all_contain{
-         width: 300px;
-     }
+    //  .all_contain{
+    //      width: 300px;
+    //  }
 
      .day_session_and_recap{
         justify-content: space-around;

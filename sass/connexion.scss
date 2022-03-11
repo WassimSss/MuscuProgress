@@ -36,3 +36,25 @@
 #submit_signin{
     margin-top: 10px;
 }
+
+@media screen and (max-width: 650px){ // Pour les 2 formulaire
+    .nav_form{
+        
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            .nav_left{
+                transform: translateX(-20px);
+            }
+        }
+    }
+
+    .signin_form{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%);
+    }
+    
+}
