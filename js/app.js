@@ -1,3 +1,6 @@
+//AJOUTER LES SERIES AVEC NBR_COUNT DOUBLON EN PHP
+//AJOUTER SUPRR ET BUTTON SANS RAFRAICHISSEMENT
+
 var getHttpRequest = function () {
   var httpRequest = false;
 
@@ -38,7 +41,14 @@ var dayRecap = document.querySelector('.all_for_muscle');
 var idUser = document.getElementById('id_user');
 var allForMuscleSolo = document.getElementsByClassName('all_for_muscle_solo');
 var allForMuscleSoloQuery = document.querySelectorAll('.all_for_muscle_solo');
+const calendar = document.querySelector('.calendar');
+const sessionCalendar = document.querySelector('.session_calendar');
+var allDaysWorked = [];
 var jsonAllSessionDay;
+let jsonAllDayWorked;
+
+//color sccs variable (a mettre dans un tableau)
+var redplus = "#AF1717";
 
 var httpRequest = getHttpRequest();
 
@@ -228,6 +238,125 @@ function deleteAllDiv(parent, deleteClassName) { // Choisi un parent qui va cont
   }
 }
 
+function loadCalendar(allDays = "") {
+  const date = new Date() ; //new Date(2022, 1, 22) 
+
+  const numberDay = date.getDay() + 1// entre 0 et 6 => quand le jour commence, en anglais, il faut faire + 1
+  const day = date.getDate(); // jour de aujourd'hui
+  const month = date.getMonth(); // mois d'aujourd'hui
+  const year = date.getFullYear();
+  
+  
+  var monthAndYear = document.createElement('div');
+  monthAndYear.classList.add('month_and_year');
+  sessionCalendar.insertBefore(monthAndYear, calendar);
+
+  var monthAndYearText = document.createElement('h2');
+  monthAndYearText.style.margin = '5px'
+  monthAndYear.appendChild(monthAndYearText);
+  
+
+  var monthSpanRed = document.createElement('span')
+  monthSpanRed.classList.add('red');
+  
+  var options = { month: 'long'};
+
+  let monthText = new Intl.DateTimeFormat('fr-FR', options).format(date);
+  monthText = monthText.charAt(0).toUpperCase() + monthText.slice(1);
+  monthSpanRed.innerHTML = monthText;
+  monthAndYearText.appendChild(monthSpanRed);
+
+  let yearText = document.createElement('span');
+  yearText.classList.add('white');
+  yearText.innerHTML = " " + year;
+  monthAndYearText.appendChild(yearText);
+
+  //Precedent 
+  const pastDaysInMonth = new Date(year, month , 0).getDate() //Nombre de jour du mois precedent 
+  
+  //Maintenant
+  const firstDayInMonth = new Date(year, month, 1).getDay() //Jour ou commence le mois de maintenant entre 0 et 6
+  const daysInMonth = new Date(year, month + 1, 0).getDate() //Nombre de jour de se mois // month + 1 car on commence au mois 0, // 3eme parametre c le nombre de jour, jour 0 c'est lonc le dernier jour du mois, ce 
+  //Après 
+  // const test = new Date(year, month + 1, 1) //Jour ou commence le mois d'apres entre 0 et 6
+  const afterDaysInMonth = new Date(year, month + 1, 0) //Nombre de jour de se mois // month + 1 car on commence au mois 0, // 3eme parametre c le nombre de jour, jour 0 c'est lonc le dernier jour du mois, ce 
+
+  // Voir le mois commence a quel jour pour mettre les jours du mois d'avant
+  let numberDayInPastMonth = pastDaysInMonth - (firstDayInMonth - 2); // premier jour a afficherdu mois precedent // -1 car de 0 a 6
+  // Precedent
+  for (let i = 1; i <= firstDayInMonth - 1; i++) { // Pour le nombre de jour du mois precedent - la place disponible, si le mois actuelle commence un vendredi, il y aura 5 case avant, a remplir avec l'ancien mois
+
+    var calendarChild = document.createElement('div');
+    calendarChild.classList.add('calendar_child');
+    calendar.appendChild(calendarChild);
+
+    var calendarChildText = document.createElement('p');
+    calendarChildText.classList.add("grey")
+    calendarChildText.innerHTML = numberDayInPastMonth;
+    numberDayInPastMonth++;
+    calendarChild.appendChild(calendarChildText);
+
+
+  }
+
+  //Ce mois ci
+  console.log(allDays);
+  console.log(parseInt(allDays[0].slice(0, 2)));
+  for (let i = 1; i < daysInMonth + 1; i++) {
+    //
+
+    var calendarChild = document.createElement('div');
+    calendarChild.classList.add('calendar_child');
+    calendar.appendChild(calendarChild);
+
+    var calendarChildText = document.createElement('p');
+    if (i == day) {
+      calendarChildText.classList.add("red")
+    }
+    for (let j = 0; j < allDays.length; j++) {
+      if(i == parseInt(allDays[j].slice(0, 2))){
+        calendarChild.style.backgroundColor = redplus;
+      }
+      
+    }
+    calendarChildText.innerHTML = i;
+    calendarChild.appendChild(calendarChildText);
+  }
+  
+
+  //Mettre les case en rouge pour les jours travailler
+  
+  let gridRest = 42 - ( firstDayInMonth + daysInMonth); //Il y a 42 colonne dans la grille, 42 - ( nbr mois precedent + nb du mois de mtn )
+  for (let i = 1; i <= gridRest + 1; i++) {
+    var calendarChild = document.createElement('div');
+    calendarChild.classList.add('calendar_child');
+    calendar.appendChild(calendarChild);
+
+    var calendarChildText = document.createElement('p');
+    calendarChildText.classList.add("grey")
+    calendarChildText.innerHTML = i; // Numero du jour
+    numberDayInPastMonth++;
+    calendarChild.appendChild(calendarChildText);
+  }
+}
+
+function fetchAllDayWorked() { // Va etre lancer apres le chargement de fetchJsonObj
+  // console.log(httpRequest);
+  httpRequest.onreadystatechange = () => {
+    // console.log(httpRequest);
+    if (httpRequest.readyState == 4) {
+
+      jsonAllDayWorked = JSON.parse(httpRequest.response);
+      for (let i = 0; i < jsonAllDayWorked.length; i++) {
+        allDaysWorked.push(jsonAllDayWorked[i]["date"]) 
+      }
+
+      loadCalendar(allDaysWorked)
+    }
+  }
+  httpRequest.open("GET", `../config/recupAllDayWorked.php`, true);
+  httpRequest.send();
+}
 
 function hoverDeleteLineExercise() { //STANDBY ALED YANNIS
   var lineExercise = document.querySelectorAll(".line_exercise");
@@ -276,19 +405,19 @@ function refrechAllExercise(jsonObj) {
     console.log(jsonAllSessionDay);
     var emptySessionDiv = document.createElement('div');
     emptySessionDiv.classList.add("empty_session_div");
-    allContain.insertBefore(emptySessionDiv,dayRecap); // Ajout de l'exercise en fonction dans l'id de son muscle
-  
+    allContain.insertBefore(emptySessionDiv, dayRecap); // Ajout de l'exercise en fonction dans l'id de son muscle
+
     var emptySessionText = document.createElement('p');
     emptySessionText.classList.add('empty_session_text');
-    emptySessionText.innerHTML ="Vous n'avez pas entre de <span class='red'>programme</span> aujourd'hui";
+    emptySessionText.innerHTML = "Vous n'avez pas entre de <span class='red'>programme</span> aujourd'hui";
     emptySessionDiv.appendChild(emptySessionText)
   } else {
     addHTMLTitleMuscle(jsonObj);
     addHTMLTitleExercise(jsonObj);
     hoverDeleteLineExercise(); // permet de faire un event listener quand les elements sont charge, avant cela ne marche pas
   }
-  // ifEmptySessionDay();
   
+
 }
 
 function allMusclesSelectInput(allMusclesJson) {
@@ -318,8 +447,6 @@ function allExercisesSelectInput(allExercisesJson) {
   });
 }
 
-
-
 function fetchJsonObj() { // Retourne en GET et choisi la fonction a executer
   // console.log(httpRequest);
   httpRequest.onreadystatechange = () => {
@@ -331,7 +458,7 @@ function fetchJsonObj() { // Retourne en GET et choisi la fonction a executer
       console.log(jsonAllSessionDay);
 
       refrechAllExercise(jsonAllSessionDay) // Appel le refreche avec se qui est trouver en reponse fetch
-
+      fetchAllDayWorked();
     }
   }
   httpRequest.open("GET", `../config/fetchExercise.php?id=${idUser.value}`, true);
@@ -366,6 +493,8 @@ function fetchJsonObjAllExercises() { // Prends tout les muscles dans la base de
   httpRequest.send();
 }
 
+
+
 function getId() {
 
 }
@@ -374,18 +503,9 @@ function ifEmptySessionDay() {
 
 }
 
-// function deleteDiv(parent, deleteClassName) { // Choisi un parent qui va contenir plusieur div avec la class qu'on entre dans le parametre deleteClassName
-//   var div = parent; //Parent
-//   var allDivDeleted = document.querySelectorAll(`.${deleteClassName}`);
-//   for (let i = 0; i < allDivDeleted.length; i++) {
-//     div.removeChild(allDivDeleted[i]);
-
-//   }
-// }
 
 
 fetchJsonObj();
-// fetchJsonObjAllMuscles(); Le code est sur la page php directement car il y a des problemes avec pls jsonObj
 
 addMuscle.addEventListener("change", function () {
   // addExercise.innerHTML = "" // Il faut effacer ce qu'il y a avant
@@ -405,7 +525,7 @@ buttonSumbitDay.addEventListener('click', function (e) {
         var result = JSON.parse(httpRequest.response);
         console.log(result);
 
-        if(document.querySelector(".empty_session_div") != null){ // Si la div "Aucun programme rentré existe", on doit l'enlever car on viens d'ajouter quelque chose
+        if (document.querySelector(".empty_session_div") != null) { // Si la div "Aucun programme rentré existe", on doit l'enlever car on viens d'ajouter quelque chose
           deleteAllDiv(allContain, "empty_session_div")
         }
 
@@ -446,7 +566,6 @@ buttonSumbitDay.addEventListener('click', function (e) {
 
   httpRequest.send(data);
 })
-
 
 
 

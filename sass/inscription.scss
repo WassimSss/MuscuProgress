@@ -1,0 +1,186 @@
+.nav_form{
+    ul{
+        display: flex;   
+        align-items: center;
+        list-style-type: none;
+        margin: 0;
+        padding: 10px 0 0 0;
+
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+                a {
+                    text-decoration: none;
+                    color: $white;
+            }
+        }
+
+        .nav_left {
+            margin-left:5% ;
+            margin-right: 25px;
+
+            a{
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+            .img_logo{
+                height: 40px;
+                width: 40px;
+                margin-right:10px ;
+            }
+        }   
+    }
+}
+
+.nav_signup {
+    .nav_right {
+
+        a{
+            margin: 0 25px 0 0px;
+        }
+
+        .link_signup{
+            color: $red;
+            opacity: 70%;
+            transition: 0.25s;
+
+            &:hover {
+                opacity: 100%;
+            }
+        }
+
+        .link_signin{
+            color: $grey;
+            transition: 0.25s;
+
+            &:hover {
+                color: $red;
+                opacity: 70%;
+            }
+        }
+    }
+}
+
+.section_before_form{
+    margin: 70px 0 0 0px;
+
+    .section_before_form_title{
+    
+    transform: translateX(50px);
+    h2{
+        color: $white;
+    }
+
+    p{
+        color: $grey;
+
+        a{
+            text-decoration: none;
+            color: $red;
+            transition: 0.25s;
+
+            &:hover {
+                color : $redplus;
+            }
+        }
+    }
+
+    }
+
+
+}
+
+.signup_form{
+    width: 500px;
+}
+
+.signin_form {
+    width: 340px;
+}
+
+.form_test {
+
+    input{
+        border: none;
+        outline: none;
+    }
+
+    .duo_label{
+        display: flex;
+
+        .input_and_label{
+            margin: 15px 0 45px 30px;
+            width: 220px;
+        }
+    }
+
+    .input_and_label{
+        position: relative;
+        background-color: $greyplus;
+        border-radius: 20px;
+        height: 50px;
+        overflow: hidden;
+        
+        input{
+            position: absolute;
+            bottom: 2px;
+            left: 20px;
+            height: 50%;
+            width: calc(100% - 40px);
+            background-color: $greyplus;
+            opacity: 100%;
+            color: $white;
+        }
+    
+        label{
+            position: absolute;
+            left: 20px;
+            top: 5px;
+            color: $grey;
+        }
+    }
+
+    .signup_div {
+        margin: 0 0 45px 30px;
+    }
+
+    .password_conditions{
+        position: absolute;
+        display: flex;
+        width: 460px;   
+        justify-content:space-around;
+        transform: translateY(-55px);
+        color: $grey;
+        font-size: 14px;
+
+    }
+
+    .submit_div{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .submit_style {
+        background-color: $red;
+        color: $white;
+        padding: 7px 14px;
+        border-radius: 20px;
+        cursor: pointer;
+        transform:translateY(-20px);
+        transition: 0.25s;
+        font-size: 15px;
+
+        &:hover {
+            background-color: $redplus;
+        }
+
+    }
+}
+
+.signup_form {
+    width: 500px;
+}

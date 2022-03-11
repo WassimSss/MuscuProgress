@@ -38,92 +38,133 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
 
         <div class="all_app">
 
-            <section class="day_session_and_recap">
-                <section class="day_session">
-                    <!-- <p><span class="red">Séance</span> du jour</p> -->
+            <section class="day_session">
+                <!-- <p><span class="red">Séance</span> du jour</p> -->
 
-                    <div>
-                        <form class="form_day_session" method="POST">
+                <div>
+                    <form class="form_day_session" method="POST">
 
-                            <div class="label_center">
-                                <h2><span class="red">Séance</span> du jour</h2>
+                        <div class="label_center">
+                            <h2><span class="red">Séance</span> du jour</h2>
 
-                                <div class="label_and_select">
-                                    <label for="choise_muscle">Muscle</label>
+                            <div class="label_and_select">
+                                <label for="choise_muscle">Muscle</label>
+                                <?php
+                                $exercise = new Exercise;
+                                $allMuscle = $exercise->recupAllChoiseMuscle();
+                                ?>
+                                <select name="muscles" id="choise_muscle">
+                                    <option value="" selected="selected">--Choisissez un muscle--</option>
                                     <?php
-                                    $exercise = new Exercise;
-                                    $allMuscle = $exercise->recupAllChoiseMuscle();
+                                    foreach ($allMuscle as $key => $value) {
+                                        $value = $allMuscle[$key]["muscle"];
+                                        $nameUnbreakable = preg_replace('/\s+/', '_', $value);/* /\s+/ pour trouver les espaces*/
                                     ?>
-                                    <select name="muscles" id="choise_muscle">
-                                        <option value="" selected="selected">--Choisissez un muscle--</option>
-                                        <?php
-                                        foreach ($allMuscle as $key => $value) {
-                                            $value = $allMuscle[$key]["muscle"];
-                                            $nameUnbreakable = preg_replace('/\s+/', '_', $value);/* /\s+/ pour trouver les espaces*/
-                                        ?>
-                                            <option value=<?= $nameUnbreakable ?>><?= $value ?></option>
-                                        <?php } ?>
-                                    </select>
-                                </div>
+                                        <option value=<?= $nameUnbreakable ?>><?= $value ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
 
 
 
-                                <!-- <div class="input_and_label">
+                            <!-- <div class="input_and_label">
                                 <input type="text" name="choise_exercise" id="choise_exercise">
                                 <label for="choise_exercise" id="choise_exercise">Exercice *</label>
                                 <ion-icon name="add-outline" class="more_logo" id="add_exercise_button"></ion-icon>
                             </div> -->
-                                <div class="label_and_select">
-                                    <label for="choise_exercise">Exercice</label>
-                                    <select name="exercises" id="choise_exercise">
-                                        <option value="">--Choisissez un exercice--</option>
+                            <div class="label_and_select">
+                                <label for="choise_exercise">Exercice</label>
+                                <select name="exercises" id="choise_exercise">
+                                    <option value="">--Choisissez un exercice--</option>
 
-                                    </select>
-                                </div>
-
-                                <div class="input_and_label">
-                                    <input type="text" name="choise_weight" id="choise_weight">
-                                    <label for="choise_weight" id="choise_weight">Poids</label>
-                                    <!-- <ion-icon name="add-outline" class="more_logo" id="add_weight_button"></ion-icon> -->
-                                </div>
-
-                                <div class="input_and_label">
-                                    <input type="text" name="choise_repetition" id="choise_repetition">
-                                    <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" id="id_user"> <!-- SECURISER SESSION ID IL PEUT ETRE MODIFIER PAR INSPECTER -->
-                                    <label for="choise_repetition" id="choise_repetition">Répétitions</label>
-                                    <!-- <ion-icon name="add-outline" class="more_logo" id="add__repetition_button"></ion-icon> -->
-                                </div>
-
-                                <button id="submit_day_session" class="submit_style" value="Ajouter">Ajouter</button>
-
+                                </select>
                             </div>
-                        </form>
-                    </div>
 
-                </section>
+                            <div class="input_and_label">
+                                <input type="text" name="choise_weight" id="choise_weight">
+                                <label for="choise_weight" id="choise_weight">Poids</label>
+                                <!-- <ion-icon name="add-outline" class="more_logo" id="add_weight_button"></ion-icon> -->
+                            </div>
 
-                <section class="day_recap">
-                    <div class="all_contain">
-                        <h2><span class="red">Programme</span> du jour</h2>
+                            <div class="input_and_label">
+                                <input type="text" name="choise_repetition" id="choise_repetition">
+                                <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" id="id_user"> <!-- SECURISER SESSION ID IL PEUT ETRE MODIFIER PAR INSPECTER -->
+                                <label for="choise_repetition" id="choise_repetition">Répétitions</label>
+                                <!-- <ion-icon name="add-outline" class="more_logo" id="add__repetition_button"></ion-icon> -->
+                            </div>
 
-                        <div class="all_for_muscle">
+                            <button id="submit_day_session" class="submit_style" value="Ajouter">Ajouter</button>
 
                         </div>
-                    </div>
-                </section>
+                    </form>
+                </div>
 
             </section>
 
-            <section class="session_calendar">
-                <div class="calendar">
-                    <?php
-                    for ($i = 0; $i < 7 * 6; $i++) { ?>
-                        <div class="calendar_child">
-                            <p><?= $i ?></p>
-                        </div>
-                    <?php } ?>
+            <section class="day_recap">
+                <div class="all_contain">
+                    <h2><span class="red">Programme</span> du jour</h2>
+
+                    <div class="all_for_muscle">
+
+                    </div>
                 </div>
             </section>
+
+            <section class="last_weight">
+                <div class="last_weight_title">
+                    <p>Semaine <span class="red">dernière</span></p>
+                </div>
+                <div class="last_weight_value">
+                    <p>60<span class="red">kg</span></p>
+                </div>
+            </section>
+
+            <section class="this_weight">
+                <div class="this_weight_title">
+                    <p>Semaine <span class="red">dernière</span></p>
+                </div>
+                <div class="this_weight_value">
+                    <p>90<span class="red">kg</span></p>
+                </div>
+            </section>
+
+            <!--<div id=container>
+                <div id="hearder">
+
+                </div>
+
+                <div id="weekdays">
+                    <div>Lundi</div>
+                    <div>Mardi</div>
+                    <div>Mercredi</div>
+                    <div>Jeudi</div>
+                    <div>Vendredi</div>
+                    <div>Samedi</div>
+                    <div>Dimanche</div>
+                </div>
+
+
+                <div id="calendar">
+
+                </div>
+            </div>
+        </div>-->
+
+            <section class="session_calendar">
+
+
+                <div class="calendar">
+
+                </div>
+            </section>
+
+            <?php
+            // echo $jour;
+
+
+            // echo date('d.m.Y', strtotime($jour. ' + 1 days')); // On ajoute 1 jour
+            ?>
 
             <div class="weight">
                 <section class="weight_last_week">

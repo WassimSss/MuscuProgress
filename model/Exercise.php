@@ -3,7 +3,6 @@ require '../config/Bdd.php';
 
 class Exercise {
     protected $pdo;
-    public $today = '03.03.22'; // mettre la date du jour automatiquement
 
     public function __construct()
     {
@@ -42,7 +41,7 @@ class Exercise {
     }
 
     public function recupAllChoiseExercise(){
-        $recupAllExercise = $this->pdo->prepare("SELECT muscle, exercise FROM `all_muscle` ORDER BY `all_muscle`.`exercise` ASC");
+        $recupAllExercise = $this->pdo->prepare("SELECT muscle, exercise FROM all_muscle ORDER BY `all_muscle`.`exercise` ASC");
         $recupAllExercise->execute();
         $fetchRecupAllExercise = $recupAllExercise->fetchAll();
         return $fetchRecupAllExercise;
@@ -63,9 +62,16 @@ class Exercise {
         
     }
 
+    public function recupAllDayWorkForUser(){
+        $recupDaysWorked = $this->pdo->prepare("SELECT COUNT(*) AS nbr_double, date FROM exercise WHERE user=? GROUP BY date HAVING COUNT(*) > 1 ");
+        $recupDaysWorked->execute(array($_SESSION['id'])); 
+        $fetchRecupDaysWorked = $recupDaysWorked->fetchAll();
+        return $fetchRecupDaysWorked;
+    }
+
     public function deleteDayExercice(){
-        $deleteDayExercise = $this->pdo->prepare("DELETE FROM `exercise` WHERE id=?");
-        $deleteDayExercise->execute($_POST['classId']);
+        $deleteDayExercise = $this->pdo->prepare("DELETE FROM exercise WHERE id=?");
+        $deleteDayExercise->execute(array($_POST['classId']));
         echo json_encode(["classId" => $_POST['classId']]);    
     }
 }
