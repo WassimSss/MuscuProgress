@@ -419,7 +419,7 @@ body {
 
 .all_app {
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
+  grid-template-columns: auto auto 175px 175px auto 175px 175px auto auto;
   grid-template-rows: repeat(10, 150px);
   margin-top: 50px;
 }
@@ -445,6 +445,7 @@ body {
   flex-direction: column;
   text-align: center;
   color: #F24646;
+  max-width: 200px;
 }
 .day_session .form_day_session input {
   border: none;
@@ -556,17 +557,20 @@ body {
 }
 
 .day_recap {
-  display: grid;
-  grid-area: 1/6/4/10;
-  border-radius: 20px;
-  overflow-y: scroll;
+  color: #ffffff;
   background-color: #272727;
+  border-radius: 20px;
+  grid-area: 1/6/4/8;
+  background-color: #272727;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .day_recap p {
   margin: 0 0 5px 15px;
   font-size: 17px;
 }
 .day_recap .all_contain {
+  width: 350px;
   border-radius: 20px;
   color: #ffffff;
   padding: 25px 0px;
@@ -612,7 +616,11 @@ body {
   margin-right: 10px;
 }
 
-.this_weight {
+.all_weight {
+  display: flex;
+  grid-area: 4/3/5/5;
+}
+.all_weight .this_weight {
   background-color: #272727;
   color: #ffffff;
   grid-area: 4/4/5/5;
@@ -623,21 +631,20 @@ body {
   flex-direction: column;
   width: 130px;
 }
-.this_weight .this_weight_title {
+.all_weight .this_weight .this_weight_title {
   font-size: 13px;
 }
-.this_weight .this_weight_value {
+.all_weight .this_weight .this_weight_value {
   font-size: 30px;
   transform: translateY(-15px);
 }
-.this_weight .div_this_weigth {
+.all_weight .this_weight .div_this_weigth {
   height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-.last_weight {
+.all_weight .last_weight {
   background-color: #272727;
   color: #ffffff;
   grid-area: 4/3/5/4;
@@ -648,14 +655,14 @@ body {
   flex-direction: column;
   width: 130px;
 }
-.last_weight .last_weight_title {
+.all_weight .last_weight .last_weight_title {
   font-size: 13px;
 }
-.last_weight .last_weight_value {
+.all_weight .last_weight .last_weight_value {
   font-size: 30px;
   transform: translateY(-15px);
 }
-.last_weight .div_last_weigth {
+.all_weight .last_weight .div_last_weigth {
   height: 100%;
   display: flex;
   justify-content: center;
@@ -663,13 +670,13 @@ body {
 }
 
 .session_calendar {
-  grid-area: 4/6/7/10;
+  grid-area: 4/6/7/8;
   margin-top: 10px;
 }
 .session_calendar .calendar {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(7, 50px);
+  grid-template-rows: repeat(6, 50px);
   background-color: #272727;
   border: 1px solid black;
   border-radius: 20px;
@@ -759,32 +766,39 @@ body {
 }
 
 @media screen and (max-width: 1050px) {
-  body {
-    background-color: green;
-  }
-
   .day_recap {
-    min-width: 300px;
+    min-width: 350px;
   }
   .day_recap .all_contain {
-    width: 280px;
+    width: 350px;
   }
 }
 @media screen and (max-width: 850px) {
-  .day_session_and_recap {
-    justify-content: space-around;
+  .nav_app ul {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .day_session_and_recap .day_recap {
-    width: 300px;
+  .nav_app ul .nav_left {
+    transform: translateX(-20px);
   }
-  .day_session_and_recap .day_recap .all_for_muscle {
+
+  .all_app {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  .day_session_and_recap .day_recap .all_for_muscle .all_for_muscle_solo {
-    width: 200px;
+
+  .day_session {
+    width: 350px;
+    height: 450px;
+    margin: 10px;
+  }
+
+  .day_recap {
+    width: 350px;
+    height: 450px;
   }
 }
 @media screen and (max-width: 700px) {

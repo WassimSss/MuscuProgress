@@ -238,6 +238,13 @@ function deleteAllDiv(parent, deleteClassName) { // Choisi un parent qui va cont
   }
 }
 
+function deleteDiv(parent, deleteClassName) { // Choisi un parent qui va contenir plusieur div avec la class qu'on entre dans le parametre deleteClassName
+  var div = parent; //Parent
+  var allDivDeleted = document.querySelector(`.${deleteClassName}`);
+  div.removeChild(allDivDeleted);
+
+}
+
 function loadCalendar(allDays = "") {
   const date = new Date() ; //new Date(2022, 1, 22) 
 
@@ -364,20 +371,16 @@ function hoverDeleteLineExercise() { //STANDBY ALED YANNIS
     lineExercise[i].addEventListener("mouseover", function () {
       lineExercise[i].lastChild.style.opacity = "100%"; //lastChild cible le dernier element, le button
 
-      lineExercise[i].lastChild.onclick = function () {
+      lineExercise[i].lastChild.onclick = function (e) {
         var recupId = lineExercise[i].lastChild.classList[1]; // Recupere la deuxieme class, la ou il y a l'id
         recupId = recupId.replace('delete_logoid', ''); // recupere une class sous la forme idXXXX, sous la meme forme que la classe de .line_exercise
-        console.log(recupId); //Pb je veut recuperer poster "classId" de valeur recupId pour lancer la requete sql avec l'id mais ça marche pas
+        deleteAllDiv(e.target.parentElement.parentElement,"id" + recupId);
         var httpRequest = getHttpRequest();
 
         httpRequest.onreadystatechange = function () {
           if (httpRequest.readyState === 4) {
             if (httpRequest.status === 200) {
-              alert("ok")
-
               var result = JSON.parse(httpRequest.response);
-              console.log(result);
-
 
             } else {
               alert('impossible de contacterle serveur');
@@ -493,12 +496,6 @@ function fetchJsonObjAllExercises() { // Prends tout les muscles dans la base de
   httpRequest.send();
 }
 
-
-
-function getId() {
-
-}
-
 function ifEmptySessionDay() {
 
 }
@@ -514,11 +511,11 @@ addMuscle.addEventListener("change", function () {
   console.log("test");
 })
 
-buttonSumbitDay.addEventListener('click', function (e) {
+buttonSumbitDay.addEventListener('click', function (e) { //Ajoute un muscle directement au clique
   e.preventDefault();
   var httpRequest = getHttpRequest();
 
-  httpRequest.onreadystatechange = function () {
+  httpRequest.onreadystatechange = function () { 
     if (httpRequest.readyState === 4) {
       if (httpRequest.status === 200) {
 

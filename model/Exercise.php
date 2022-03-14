@@ -34,7 +34,7 @@ class Exercise {
     }
 
     public function recupAllChoiseMuscle(){
-        $recupAllMuscle = $this->pdo->prepare("SELECT COUNT(*) AS nbr_double, muscle FROM all_muscle GROUP BY muscle HAVING COUNT(*) > 1 ORDER BY `all_muscle`.`muscle` ASC");
+        $recupAllMuscle = $this->pdo->prepare("SELECT COUNT(*) AS nbr_double, muscle FROM all_muscle GROUP BY muscle HAVING COUNT(*) >= 1 ORDER BY `all_muscle`.`muscle` ASC");
         $recupAllMuscle->execute();
         $fetchRecupAllMuscle = $recupAllMuscle->fetchAll();
         return $fetchRecupAllMuscle;

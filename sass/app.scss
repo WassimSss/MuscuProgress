@@ -75,15 +75,13 @@
 
 .all_app{
     display: grid;
-    grid-template-columns: repeat(11, 1fr);
+    grid-template-columns: auto auto 175px 175px auto 175px 175px auto auto ;
     grid-template-rows: repeat(10, 150px);
     margin-top: 50px;
 }
 
 
-
-
-    .day_session {
+.day_session {
         display: grid;
         color: $white;
         background-color: $greyplus;
@@ -105,6 +103,7 @@
                 flex-direction: column;
                 text-align: center;
                 color: $red;
+                max-width: 200px;
 
                 select{  
                     // width: 200px;
@@ -243,15 +242,18 @@
                 margin-top: 20px;
             }
         }
-    }
+}
 
-    .day_recap{
-        display: grid;
-        grid-area: 1/6/4/10;
-        border-radius: 20px; 
-        // max-width: 500px; 
-        overflow-y: scroll;
+
+.day_recap{
+        // display: grid;
+        color: #ffffff;
+        background-color: #272727;
+        border-radius: 20px;
+        grid-area: 1/6/4/8;
         background-color: $greyplus;
+        overflow-y: scroll;
+        overflow-x:hidden;
 
         p{
             margin: 0 0 5px 15px;
@@ -259,7 +261,7 @@
         }
 
         .all_contain{
-            
+            width: 350px;
             border-radius: 20px;
             color: $white;
             padding: 25px 0px;
@@ -273,6 +275,7 @@
             .empty_session_text{
                 text-align: center;
                 margin: 10px 0 0 0;
+                
             }
         }
 
@@ -329,7 +332,12 @@
 
         }
 
-    }
+}
+
+.all_weight{
+    display: flex;
+    grid-area: 4/3/5/5;
+    
 
     .this_weight{
         background-color: $greyplus;
@@ -361,9 +369,9 @@
             justify-content: center;
             align-items: center;
         }
-    }
+}
 
-    .last_weight{
+.last_weight{
         background-color: $greyplus;
         color: $white;
         grid-area: 4/3/5/4;
@@ -393,20 +401,23 @@
             justify-content: center;
             align-items: center;
         }
-    }
+}
+}
 
-    .session_calendar{
+
+
+.session_calendar{
         // display: flex;
         // justify-content: center;
         // align-items: center;
-        grid-area: 4/6/7/10;
-          margin-top: 10px;
+        grid-area: 4/6/7/8;
+        margin-top: 10px;
           
         .calendar {       
             display: grid;
-            grid-template-columns: repeat(7, 1fr);
+            grid-template-columns: repeat(7, 50px);
             // width: calc(40px * 7);
-            grid-template-rows: repeat(6, 1fr);
+            grid-template-rows: repeat(6, 50px);
             // height: calc(40px * 6);
             background-color: $greyplus;
             border: 1px solid black;
@@ -433,7 +444,7 @@
                 }
             }
         }
-    }
+}
 
 
 .weight{
@@ -512,15 +523,13 @@
 }
 
 @media screen and (max-width: 1050px){ // Pour les 2 formulaire
-    body{
-        background-color: green;
-    }
+
 
     .day_recap{
-        min-width: 300px;
+        min-width: 350px;
 
         .all_contain{
-            width: 280px;
+            width: 350px;
         }
     }
     
@@ -532,26 +541,83 @@
     //      width: 300px;
     //  }
 
-     .day_session_and_recap{
-        justify-content: space-around;
+    .nav_app{
         
-         .day_recap{
-             width: 300px;
+        ul{
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
 
-             .all_for_muscle{
-                 display: flex;
-                 flex-direction: column;
-                 justify-content: center;
-                 align-items: center;
+            .nav_left{
+                transform: translateX(-20px);
+            }
+        }
+    }
 
-                 .all_for_muscle_solo{
-                     width: 200px;
-                 }
-             }
-         }
-     }
+    .all_app{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .day_session{
+        width: 350px;
+        height: 450px;
+        margin: 10px;
+    
+    }
+
+    .day_recap{
+        width: 350px;
+        height: 450px;
+    }
+
+    //  .day_session_and_recap{
+    //     justify-content: space-around;
+        
+    //      .day_recap{
+    //          width: 300px;
+
+    //          .all_for_muscle{
+    //              display: flex;
+    //              flex-direction: column;
+    //              justify-content: center;
+    //              align-items: center;
+
+    //              .all_for_muscle_solo{
+    //                  width: 200px;
+    //              }
+    //          }
+    //      }
+    //  }
+
+    //  .day_session{
+    //     grid-area: 1/4/4/7;
+    //  }
+
+    //  .day_recap{
+    //      margin-top: 20px;
+    //      grid-area: 4/4/7/7;
+    //  }
+
+    //  .last_weight{
+    //      grid-area: 7/4/7/7;;
+    //  }
+
+    //  .this_weight{
+    //      grid-area: 7/6/7/7;
+    //  }
+     
+    //  .session_calendar{
+    //      display: none;
+    //  }
+
+     
 
  }
+
+
  @media screen and (max-width: 700px){
     .day_session_and_recap{
          flex-direction: column;

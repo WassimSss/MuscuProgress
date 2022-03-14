@@ -81,13 +81,13 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                             </div>
 
                             <div class="input_and_label">
-                                <input type="text" name="choise_weight" id="choise_weight">
+                                <input type="number" name="choise_weight" id="choise_weight">
                                 <label for="choise_weight" id="choise_weight">Poids</label>
                                 <!-- <ion-icon name="add-outline" class="more_logo" id="add_weight_button"></ion-icon> -->
                             </div>
 
                             <div class="input_and_label">
-                                <input type="text" name="choise_repetition" id="choise_repetition">
+                                <input type="number" name="choise_repetition" id="choise_repetition">
                                 <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>" id="id_user"> <!-- SECURISER SESSION ID IL PEUT ETRE MODIFIER PAR INSPECTER -->
                                 <label for="choise_repetition" id="choise_repetition">Répétitions</label>
                                 <!-- <ion-icon name="add-outline" class="more_logo" id="add__repetition_button"></ion-icon> -->
@@ -111,6 +111,7 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                 </div>
             </section>
 
+            <section class="all_weight">
             <section class="last_weight">
                 <div class="last_weight_title">
                     <p>Semaine <span class="red">dernière</span></p>
@@ -128,6 +129,8 @@ if (isset($_SESSION['username']) && isset($_SESSION['email'])) {
                     <p>90<span class="red">kg</span></p>
                 </div>
             </section>
+            </section>
+            
 
             <!--<div id=container>
                 <div id="hearder">
